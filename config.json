@@ -1,0 +1,15 @@
+{
+    "listener": {
+        "host": "localhost",
+        "port": ":8080",
+        "protocol": "tcp",
+        "idle_timeout": 30,
+        "write_timeout": 30,
+        "read_timeout": 30
+    },
+    "storage": {
+        "db_driver": "sqlite3",
+        "db_name": "auth.db",
+        "config": "?_foreign_keys=on"
+    }
+}
