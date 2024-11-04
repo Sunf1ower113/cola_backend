@@ -59,10 +59,11 @@ func start(router http.Handler, cfg *config.Config) {
 		ReadTimeout:  time.Duration(cfg.Listener.ReadTimeout) * time.Second,
 	}
 	port := os.Getenv("PORT")
+	log.Println(port)
 	if port == "" {
 		port = cfg.Listener.Port // На случай, если PORT не установлен
 		log.Printf("Warning: PORT environment variable not set, defaulting to %s", port)
 	}
-	log.Printf("Server is listening port %s%s\n", cfg.Listener.Host, port)
+	log.Printf("Server is listening port %s:%s\n", cfg.Listener.Host, port)
 	log.Panic(server.Serve(listener))
 }
