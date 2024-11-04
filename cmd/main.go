@@ -26,9 +26,13 @@ func main() {
 		log.Panicf("cannot ping db: %v", err)
 	}
 	router := http.NewServeMux()
+	origin := os.Getenv("FRONTEND_ORIGIN")
+	if origin == "" {
+		origin = "http://localhost:3000"
+	}
 	c := cors.New(cors.Options{
-		//AllowedOrigins:   []string{"http://192.168.1.103:3000"},
-		AllowedOrigins:   []string{"*"},
+		AllowedOrigins: []string{origin},
+		//AllowedOrigins:   []string{"*"},
 		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowedHeaders:   []string{"Content-Type", "Authorization"},
 		AllowCredentials: true,
