@@ -54,7 +54,7 @@ func start(router http.Handler, cfg *config.Config) {
 		port = cfg.Listener.Port // На случай, если PORT не установлен
 		log.Printf("Warning: PORT environment variable not set, defaulting to %s", port)
 	}
-	listener, err := net.Listen(cfg.Listener.Protocol, port)
+	listener, err := net.Listen(cfg.Listener.Protocol, ":"+port)
 	if err != nil {
 		log.Fatal(err)
 	}
